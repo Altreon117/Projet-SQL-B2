@@ -1,0 +1,12 @@
+# Fichiers systèmes
+.DS_Store
+Thumbs.db
+
+# Fichiers de configuration IDE (VS Code, IntelliJ, etc.)
+.idea/
+.vscode/
+*.swp
+
+# Fichiers temporaires SQL
+*.log
+*.bak
