@@ -18,6 +18,9 @@ psql -U $DB_USER -d $DB_NAME -f sql/10_create_tables_flotte.sql
 echo "---------------------------------------"
 echo "3. Import des données (CSV + Génération)..."
 psql -U $DB_USER -d $DB_NAME -f sql/20_insert_data_flotte.sql
+psql -U $DB_USER -d $DB_NAME -f sql/13_create_tables_technicien.sql
+psql -U $DB_USER -d $DB_NAME -f sql/14_create_tables_panne.sql
+psql -U $DB_USER -d $DB_NAME -f sql/15_create_tables_intervention.sql
 
 echo "---------------------------------------"
 echo "4. Création des Vues (Mission 3)..."
