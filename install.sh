@@ -24,8 +24,13 @@ psql -U $DB_USER -d $DB_NAME -f sql/21_insert_data_clients.sql
 psql -U $DB_USER -d $DB_NAME -f sql/22_insert_data_maintenance.sql
 
 echo "---------------------------------------"
-echo "4. Création des Vues (Mission 3)..."
+echo "4. Création des Automatismes (Triggers)..."
+psql -U $DB_USER -d $DB_NAME -f sql/13_triggers_maintenance.sql
+
+echo "---------------------------------------"
+echo "5. Création des Vues (Mission 3)..."
 psql -U $DB_USER -d $DB_NAME -f sql/30_views_flotte.sql
+psql -U $DB_USER -d $DB_NAME -f sql/99_queries.sql
 
 echo "---------------------------------------"
 echo "✅ Installation terminée avec succès !"

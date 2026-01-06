@@ -41,3 +41,22 @@ SELECT SUM(montant) as total_revenus_euros FROM paiement;
 
 
 --##### PARTIE RAPHAEL ###############################################
+
+-- Les véhicules les plus fragiles 
+SELECT v.matricule, COUNT(p.id_panne) as total_pannes
+FROM vehicule v
+JOIN PANNE p ON v.id = p.id_vehicule
+GROUP BY v.matricule
+ORDER BY total_pannes DESC;
+
+-- Nombre d'interventions
+SELECT t.nom, t.prenom, COUNT(i.id_intervention) as nb_interventions
+FROM TECHNICIEN t
+LEFT JOIN INTERVENTION i ON t.id_technicien = i.id_technicien
+GROUP BY t.id_technicien, t.nom, t.prenom;
+
+-- 3. État actuel de la flotte immobilisée
+SELECT statut, COUNT(*) as nb_vehicules
+FROM vehicule
+WHERE statut IN ('EN_PANNE', 'MAINTENANCE', 'HORS_SERVICE')
+GROUP BY statut;
