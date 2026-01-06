@@ -1,0 +1,26 @@
+DROP TABLE IF EXISTS TECHNICIEN CASCADE;
+DROP TABLE IF EXISTS PANNE CASCADE;
+DROP TABLE IF EXISTS INTERVENTION CASCADE;
+
+CREATE TABLE TECHNICIEN (
+    id_technicien SERIAL PRIMARY KEY,
+    nom VARCHAR(50),
+    prenom VARCHAR(50),
+    specialite TEXT
+);
+
+CREATE TABLE PANNE (
+    id_panne SERIAL PRIMARY KEY,
+    description TEXT,
+    date_signalement DATE DEFAULT CURRENT_DATE,
+    severite VARCHAR(20) CHECK (severite IN ('FAIBLE', 'MOYENNE', 'CRITIQUE')),
+    id_vehicule INT REFERENCES VEHICULE(id)
+);
+
+CREATE TABLE INTERVENTION (
+    id_intervention SERIAL PRIMARY KEY,
+    date_intervention DATE,
+    id_technicien INT REFERENCES TECHNICIEN(id_technicien),
+    id_panne INT REFERENCES PANNE(id_panne),
+	id_vehicule INT REFERENCES VEHICULE(id)
+);

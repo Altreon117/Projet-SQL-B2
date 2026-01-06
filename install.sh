@@ -14,13 +14,14 @@ psql -U $DB_USER -f sql/00_init_db.sql
 echo "---------------------------------------"
 echo "2. Création des tables..."
 psql -U $DB_USER -d $DB_NAME -f sql/10_create_tables_flotte.sql
+psql -U $DB_USER -d $DB_NAME -f sql/11_create_tables_clients.sql
+psql -U $DB_USER -d $DB_NAME -f sql/12_create_tables_maintenance.sql
 
 echo "---------------------------------------"
 echo "3. Import des données (CSV + Génération)..."
 psql -U $DB_USER -d $DB_NAME -f sql/20_insert_data_flotte.sql
-psql -U $DB_USER -d $DB_NAME -f sql/13_create_tables_technicien.sql
-psql -U $DB_USER -d $DB_NAME -f sql/14_create_tables_panne.sql
-psql -U $DB_USER -d $DB_NAME -f sql/15_create_tables_intervention.sql
+psql -U $DB_USER -d $DB_NAME -f sql/21_insert_data_clients.sql
+psql -U $DB_USER -d $DB_NAME -f sql/22_insert_data_maintenance.sql
 
 echo "---------------------------------------"
 echo "4. Création des Vues (Mission 3)..."
